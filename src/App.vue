@@ -8,7 +8,11 @@
 
 export default {
   name: 'App',
-  
+  mounted() {
+    this.axios.get('/user/login').then((res) => {
+      console.log(res)
+    })
+  }
 }
 </script>
 
