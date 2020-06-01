@@ -15,7 +15,7 @@ if(mock) {
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 // 请求基本路径
-// axios.defaults.baseURL = env.baseURL
+axios.defaults.baseURL ='/api'
 
 // 如果请求花费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 8000
