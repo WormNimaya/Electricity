@@ -1,4 +1,4 @@
-# vue22
+# Electricity
 
 ## Project setup
 ```
