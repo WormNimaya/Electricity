@@ -9,8 +9,8 @@
         </div>
         <div class="topbar-user">
           <a href="javaScript:;" v-if="username">{{username}}</a>
-          <a href="javaScript:;" v-if="!username">登录</a>
-           <a href="javaScript:;">退出</a>
+          <a href="javaScript:;" v-if="!username" @click="$router.push('/personal')">登录</a>
+           <a href="javaScript:;" @click="logout">退出</a>
             <a href="javaScript:;">我的订单</a>
           <a href="javaScript:;" class="my-car" @click="goToCart"><span class="icon-car"></span>购物车</a>
         </div>
@@ -25,8 +25,8 @@
           <div class="item-menu">
             <span>小米cc9</span>
             <div class="children">
-              <ul v-for="(item, index) in productList" :key="index">
-                <li class="product">
+              <ul >
+                <li class="product" v-for="(item, index) in productList" :key="index">
                   <a v-bind:href="'/#/product/'+item.id" target="_blank">
                     <div class="pro-img">
                       <img :src="item.mainImage" :alt="item.subtitle">
@@ -119,7 +119,7 @@ export default {
  name: 'nav-header',
  data() {
    return {
-     username:'jack',
+     username:'',
      productList:[]
    }
  },
@@ -139,6 +139,11 @@ export default {
    },
    goToCart() {
      this.$router.push('/car')
+   },
+   logout() {
+     this.axios.post('/user/logout').then(() => {
+       alert('退出成功')
+     })
    }
  },
  filters: {
@@ -245,6 +250,7 @@ export default {
             width: 1226px;
             height: 0px;
             opacity: 0;
+            overflow:hidden;
             transition: all 1s;
             box-shadow:0px 7px 6px 0px rgba(0, 0, 0, 0.11);
             background-color: #ffffff;

@@ -13,6 +13,8 @@ import OrderConfirm from './pages/orderConfirm.vue'
 import OrderPay from './pages/orderPay.vue'
 import AliPay from './pages/alipay.vue'
 import Cart from './pages/cart.vue'
+import Personal from './pages/personal.vue'
+import Register from './pages/register.vue'
 import Login from './pages/login.vue'
 export default new VueRouter({
   routes: [
@@ -67,9 +69,20 @@ export default new VueRouter({
       ]
     },
     {
-      path: '/login',
-      component: Login,
-      name: 'login'
+      path: '/personal',
+      redirect: '/personal/login',
+      component: Personal,
+      name: 'personal',
+      children: [
+        {
+          path: 'login',
+          component: Login
+        },
+        {
+          path: 'register',
+          component: Register
+        }
+      ]
     },
     {
       path: '/cart',

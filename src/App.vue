@@ -8,6 +8,22 @@
 
 export default {
   name: 'App',
+  methods: {
+    getUser() {
+      this.axios.get('/user').then((res) => {
+        console.log(res)
+      })
+    },
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then((res) => {
+        console.log(res)
+      })
+    }
+  },
+  mounted() {
+   this.getUser()
+   this.getCartCount()
+  }
 }
 </script>
 

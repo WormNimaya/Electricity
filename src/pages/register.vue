@@ -1,35 +1,39 @@
 <template>
-  <div class="login">
+  <div class="regsiter">
     <div class="input">
       <input type="text" placeholder="请输入用户名" v-model="username">
     </div>
     <div class="input">
       <input type="password" placeholder="请输入密码" v-model="password">
     </div>
-    <a href="javascript:;" class="btn" 
-    @click="login">登录</a>
+    <div class="input">
+      <input type="text" placeholder="请输入邮箱" v-model="email">
+    </div>
+    <a href="javascript:;" class="btn" @click="register"
+    >注册</a>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'login',
+  name: 'regsiter',
   data() {
     return {
       username:'',
       password:'',
-      userid:''
+      email:''
     }
   },
   methods: {
-    login() {
-      let {username, password} = this
-      this.axios.post('/user/login',{
+    register() {
+      let {username, password, email} = this
+      this.axios.post('/user/register',{
         username,
-        password
-      }).then((res) => {
-        this.$cookie.set('userid', res.id, {expires: '1M'})
-        this.$router.push('/index')
+        password,
+        email
+      }).then(() => {
+        alert('注册成功')
+        this.$router.push('/personal/login')
       })
     }
   },
@@ -37,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .login{
+  .regsiter{
     margin: 0 auto;
     .input{
       width: 348px;
