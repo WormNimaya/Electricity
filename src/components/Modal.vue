@@ -1,5 +1,6 @@
 <template>
-  <div class="dialog" v-show="showisFlag">
+<transition>
+ <div class="dialog" v-show="showisFlag">
     <div class="mask"></div>
     <div class="modal">
       <div class="dialog-header">
@@ -23,6 +24,8 @@
       </div>
     </div>
   </div>
+</transition>
+  
 </template>
 
 <script>
@@ -63,6 +66,14 @@ export default {
   .dialog{
     z-index: 10;
     @include position(fixed);
+    &.v-enter,
+    &.v-leave-to{
+      top:-100%;
+     }
+    &.v-enter-active,
+    &.v-leave-active{
+       transition: all 0.5s ease;
+     }
     .mask{
       @include position(fixed);
       background-color: $colorI;

@@ -4,9 +4,10 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
-
+import store from './store/index'
 import App from './App.vue'
-
+import VueStickto from 'vue-stickto'
+Vue.use(VueStickto)
 const mock = true
 if(mock) {
   require('./mock/api')
@@ -41,6 +42,7 @@ axios.interceptors.response.use(function(response) {
   }
 })
 new Vue({
+  store,
   render: h => h(App),
   router
 }).$mount('#app')

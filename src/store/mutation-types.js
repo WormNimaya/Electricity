@@ -1,0 +1,3 @@
+export const SET_USERNAME = 'SET_USERNAME'
+
+export const SET_CART_COUNT = 'SET_CART_COUNT'

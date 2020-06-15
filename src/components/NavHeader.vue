@@ -115,16 +115,24 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations} from 'vuex'
 export default {
  name: 'nav-header',
  data() {
    return {
-     username:'',
      productList:[]
    }
  },
  mounted() {
    this.getProductList()
+   this.getUser()
+   this.getCartCount()
+ },
+ computed: {
+   ...mapGetters([
+     'username',
+     'cartCount'
+   ])
  },
  methods: {
    getProductList() {
@@ -142,9 +150,29 @@ export default {
    },
    logout() {
      this.axios.post('/user/logout').then(() => {
+       this.setUsername(''),
+       this.setCartCount(0)
        alert('退出成功')
      })
-   }
+   },
+    getUser() {
+      this.axios.get('/user').then((res) => {
+        if(res) {
+           this.setUsername(res.username)
+        }
+      })
+    },
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then((res) => {
+       if(res) {
+         this.setCartCount(res)
+       }
+      })
+    },
+    ...mapMutations({
+      setUsername : 'SET_USERNAME',
+      setCartCount : 'SET_CART_COUNT'
+    })
  },
  filters: {
    currency(val) {

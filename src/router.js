@@ -35,7 +35,7 @@ export default new VueRouter({
           name: 'product'
         },
         {
-          path: '/detail',
+          path: '/detail/:id',
           component: Detail,
           name: 'detail'
         }
