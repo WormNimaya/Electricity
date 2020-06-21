@@ -51,6 +51,7 @@ export default {
     position: fixed;
     top: 0px;
     left: 0px;
+    z-index: 100;
   }
   .title {
     font-size: 18px;

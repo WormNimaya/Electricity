@@ -7,7 +7,10 @@ import VueCookie from 'vue-cookie'
 import store from './store/index'
 import App from './App.vue'
 import VueStickto from 'vue-stickto'
+import { Message } from 'element-ui';
 Vue.use(VueStickto)
+Vue.use(Message)
+Vue.prototype.$message = Message;
 const mock = true
 if(mock) {
   require('./mock/api')

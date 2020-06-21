@@ -28,7 +28,7 @@ export default {
         username,
         password
       }).then((res) => {
-        this.$cookie.set('userid', res.id, {expires: '1M'})
+        this.$cookie.set('userid', res.id, {expires: 'Session'})
         this.$router.push('/index')
       })
     }

@@ -77,7 +77,7 @@
               <img v-lazy="item.mainImage" alt="">
               <p class="name">{{item.name}}</p>
               <span class="des">{{item.subtitle}}</span>
-              <p class="price" @click='addShop'>{{item.price}}元</p>
+              <p class="price" @click='addShop(item.id)'>{{item.price}}元</p>
             </div>
           </div> 
        </div>     
@@ -106,6 +106,7 @@ import ServeBar from '../components/ServeBar'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import Modal from '../components/Modal'
 import 'swiper/css/swiper.css'
+import {mapMutations} from 'vuex'
 
 export default {
   name: 'index',
@@ -185,12 +186,23 @@ export default {
           this.phoneList = [res.list.slice(0,4),res.list.slice(4,8)];
         })
       },
-      addShop() {
-        this.showisFlag = true
+     addShop(id) {
+        this.axios.post('carts',{
+          productId:id,
+          selected: true
+        }).then((res)=> {
+          this.setCartCount(res.cartTotalQuantity)
+          this.showisFlag = true
+          // this.$router.push('/cart')
+        })
       },
       goToCar() {
         this.$router.push('/cart')
-      }
+      },
+      ...mapMutations({
+        setCartCount: 'SET_CART_COUNT'
+      })
+
   },
   mounted() {
     this.init()
@@ -205,7 +217,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../assets/scss/mixin.scss';
 @import '../assets/scss/base.scss';
 @import '../assets/scss/config.scss';

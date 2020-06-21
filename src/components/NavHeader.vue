@@ -10,9 +10,9 @@
         <div class="topbar-user">
           <a href="javaScript:;" v-if="username">{{username}}</a>
           <a href="javaScript:;" v-if="!username" @click="$router.push('/personal')">登录</a>
-           <a href="javaScript:;" @click="logout">退出</a>
+           <a href="javaScript:;" @click="logout" v-if="username">退出</a>
             <a href="javaScript:;">我的订单</a>
-          <a href="javaScript:;" class="my-car" @click="goToCart"><span class="icon-car"></span>购物车</a>
+          <a href="javaScript:;" class="my-car" @click="goToCart"><span class="icon-car"></span>购物车({{cartCount}})</a>
         </div>
       </div>
     </div>
@@ -146,13 +146,14 @@ export default {
      })
    },
    goToCart() {
-     this.$router.push('/car')
+     this.$router.push('/cart')
    },
    logout() {
      this.axios.post('/user/logout').then(() => {
        this.setUsername(''),
        this.setCartCount(0)
-       alert('退出成功')
+       this.$cookie.set('userid', '',{expires: '-1'})
+       this.$message.success('退出成功')
      })
    },
     getUser() {
@@ -217,38 +218,6 @@ export default {
     .container{
       position: relative;
       height: 112px;
-      .header-logo{
-        width: 55px;
-        height: 55px;
-        overflow: hidden;
-        a{
-          display: inline-block;
-          width: 110px;
-          height: 55px;
-          background: #ff6600;
-          &:before{
-            display: inline-block;
-            content: '';
-            width: 55px;
-            height: 55px;
-            background: url('../../public/imgs/mi-logo.png') no-repeat;
-            background-size: contain;
-            transition: all 0.2s;
-          }
-          &:after{
-            display: inline-block;
-            content: '';
-            width: 55px;
-            height: 55px;
-            background: url('../../public/imgs/mi-home.png') no-repeat;
-            background-size: contain;
-          }
-          &:hover:before{
-            margin-left: -55px;
-            transition: all 0.2s;
-          }
-        }
-      }
       .header-menu{
         display: flex;
         align-items: center;
