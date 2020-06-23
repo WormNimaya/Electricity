@@ -153,7 +153,7 @@ export default {
        this.setUsername(''),
        this.setCartCount(0)
        this.$cookie.set('userid', '',{expires: '-1'})
-       this.$message.success('退出成功')
+       this.$message.warning('退出成功')
      })
    },
     getUser() {

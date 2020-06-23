@@ -4,7 +4,7 @@
       <div class="header-logo">
         <a href="/#/index"></a>
       </div>
-      <div class="message">
+      <div class="mes">
         <h2>{{title}} <slot name="biao"></slot></h2>
         <div class="username">{{username}}</div>
       </div>
@@ -37,7 +37,7 @@ export default {
   line-height: 117px;
  .container{
     justify-content: flex-start;
-    .message{
+    .mes{
       display: flex;
       justify-content: space-around;
       h2{

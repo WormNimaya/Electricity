@@ -2,7 +2,7 @@
   <div class="param" :class="{'fixed':isFixed}">
    <div class="container">
      <div class="title">{{title}}</div>
-     <div class="message">
+     <div class="mes">
        <a href="">概念</a><span>|</span>
        <a href="">参数</a><span>|</span>
        <a href="">用户评价</a>
@@ -57,7 +57,7 @@ export default {
     font-size: 18px;
     font-weight: bold;
   }
-  .message{
+  .mes{
     color: #666666;
     font-size: 16px;
     span{

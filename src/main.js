@@ -7,9 +7,12 @@ import VueCookie from 'vue-cookie'
 import store from './store/index'
 import App from './App.vue'
 import VueStickto from 'vue-stickto'
-import { Message } from 'element-ui';
+import { Message,  Dialog, Button } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(VueStickto)
-Vue.use(Message)
+Vue.component(Message.name, Message)
+Vue.component(Dialog.name, Dialog)
+Vue.component(Button.name, Button)
 Vue.prototype.$message = Message;
 const mock = true
 if(mock) {
@@ -41,7 +44,7 @@ axios.interceptors.response.use(function(response) {
     }
    
   }else{
-    alert(res.msg)
+    this.$message.warning(res.msg)
   }
 })
 new Vue({

@@ -30,7 +30,7 @@
           </div>
           <div class="right">
             <span class="yuan">合计：{{cartTotalPrice}}元</span>
-            <button>去结算</button>
+            <button @click="order">去结算</button>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ export default {
    order(){
      let check = this.list.every(item => !item.productSelected)
      if(check) {
-       alert('至少选中一件商品')
+       this.$message.warning('至少选中一件商品')
        return
      }
     this.$router.push('/order/confirm');

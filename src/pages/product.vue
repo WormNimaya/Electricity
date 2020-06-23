@@ -8,7 +8,7 @@
     <div class="img-bg">
       <h2>{{product.name}}</h2>
       <p>{{product.subtitle}}</p>
-      <div class="message">
+      <div class="mes">
         <a href=""> 全球首款双频GP</a><span>|</span>
         <a href="">骁龙845</a><span>|</span>
         <a href="">AI 变焦双摄</a><span>|</span>
@@ -119,7 +119,7 @@ export default {
       font-size: 30px;
       font-weight: bold;
     }
-    .message{
+    .mes{
       margin-top: 20px;
       a{
          font-size: 20px;

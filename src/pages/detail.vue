@@ -2,7 +2,7 @@
   <div class="detail">
     <product-param :title="product.name"></product-param>
     <div class="container">
-      <div class="message">
+      <div class="mes">
         <div class="swipers">
            <swiper ref="mySwiper" :options="swiperOptions">
               <swiper-slide><img src="/imgs/detail/phone-1.jpg" alt=""></swiper-slide>
@@ -12,7 +12,7 @@
             <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
         </div>
-        <div class="detail-message">
+        <div class="detail-mes">
           <h2>{{product.name}}</h2>
           <p>相机全新升级 / 960帧超慢动作 / 手持超级夜景 / 全球首款双频GPS / 骁龙845处理器 / 红外人脸解锁 / AI变焦双摄 / 三星 AMOLED 屏小米自营</p>
           <span class="name">小米自营</span>
@@ -27,10 +27,10 @@
             <p>有现货</p>
           </div>
           <h3>选择版本</h3>
-          <div class="shop-message" :class="{'check': ischeck===1}" @click="ischeck=1">6GB+64GB 全网通</div>
-          <div class="shop-message" :class="{'check': ischeck===2}" @click="ischeck=2">4GB+64GB 移动4G</div>
+          <div class="shop-mes" :class="{'check': ischeck===1}" @click="ischeck=1">6GB+64GB 全网通</div>
+          <div class="shop-mes" :class="{'check': ischeck===2}" @click="ischeck=2">4GB+64GB 移动4G</div>
           <h3>选择颜色</h3>
-          <div class="shop-message check"><span></span> 深空灰</div>
+          <div class="shop-mes check"><span></span> 深空灰</div>
           <div class="total">
             <p><span>{{product.name}} {{ischeck===1 ? '6GB+64GB 全网通' : '4GB+64GB 移动4G'}}</span>999元<span></span></p>
             <span class="price">总计：{{product.price}}元</span>
@@ -114,7 +114,7 @@ export default {
 
 <style lang="scss" scoped>
 .detail{
-  .message{
+  .mes{
     display: flex;
     justify-content: space-around;
     .swipers{
@@ -125,7 +125,7 @@ export default {
         width: 650px;
       }
     }
-    .detail-message{
+    .detail-mes{
       padding-top: 50px;
       h2{
         font-size:30px
@@ -185,7 +185,7 @@ export default {
         font-size: 16px;
         margin: 20px 0;
       }
-      .shop-message{
+      .shop-mes{
         width: 280px;
         height: 50px;
         display: inline-block;

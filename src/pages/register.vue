@@ -32,7 +32,7 @@ export default {
         password,
         email
       }).then(() => {
-        this.$message.success('注册成功')
+        this.$message.warning('注册成功')
         this.$router.push('/personal/login')
       })
     }
