@@ -9,6 +9,7 @@ import App from './App.vue'
 import VueStickto from 'vue-stickto'
 import { Message,  Dialog, Button } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import { Promise } from 'core-js'
 Vue.use(VueStickto)
 Vue.component(Message.name, Message)
 Vue.component(Dialog.name, Dialog)
@@ -32,7 +33,6 @@ axios.defaults.baseURL ='/api'
 
 // 如果请求花费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 8000
-
 axios.interceptors.response.use(function(response) {
   let res = response.data
   let path = location.hash
@@ -42,10 +42,12 @@ axios.interceptors.response.use(function(response) {
     if(path !== '#/index') {
       window.location.href = '/#/personal/login'
     }
-   
   }else{
-    this.$message.warning(res.msg)
+    Message.warning(res.msg)
   }
+},(error) => {
+  Message.error(error.response.data.message)
+  return Promise.reject(error)
 })
 new Vue({
   store,
