@@ -10,6 +10,7 @@ import VueStickto from 'vue-stickto'
 import { Message,  Dialog, Button } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import { Promise } from 'core-js'
+ 
 Vue.use(VueStickto)
 Vue.component(Message.name, Message)
 Vue.component(Dialog.name, Dialog)

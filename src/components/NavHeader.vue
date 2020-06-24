@@ -11,7 +11,7 @@
           <a href="javaScript:;" v-if="username">{{username}}</a>
           <a href="javaScript:;" v-if="!username" @click="$router.push('/personal')">登录</a>
            <a href="javaScript:;" @click="logout" v-if="username">退出</a>
-            <a href="javaScript:;">我的订单</a>
+            <a href="/#/order/list">我的订单</a>
           <a href="javaScript:;" class="my-car" @click="goToCart"><span class="icon-car"></span>购物车({{cartCount}})</a>
         </div>
       </div>
