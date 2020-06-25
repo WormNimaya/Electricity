@@ -36,10 +36,11 @@ export default {
   height: 117px;
   line-height: 117px;
  .container{
-    justify-content: flex-start;
+    justify-content: space-between;
     .mes{
+      width: 1150px;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       h2{
         font-size: 30px;
         margin-left: 35px;
