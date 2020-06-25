@@ -3,67 +3,59 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Index from './pages/index.vue'
-import Product from './pages/product.vue'
-import Detail from './pages/detail.vue'
-import Home from './pages/home.vue'
-import Order from './pages/order.vue'
-import OrderList from './pages/orderList.vue'
-import OrderConfirm from './pages/orderConfirm.vue'
-import OrderPay from './pages/orderPay.vue'
-import AliPay from './pages/alipay.vue'
-import Cart from './pages/cart.vue'
-import Personal from './pages/personal.vue'
-import Register from './pages/register.vue'
-import Login from './pages/login.vue'
+// import Index from './pages/index.vue'
+// import Home from './pages/home.vue'
+// import Order from './pages/order.vue'
+
+
 export default new VueRouter({
   routes: [
     {
       path: '/',
       redirect: '/index',
-      component: Home,
+      component: () => import('./pages/home.vue'),
       name: 'home',
       children: [
         {
           path: '/index',
-          component: Index,
+          component: () => import('./pages/index.vue'),
           name: 'index'
         },
         {
           path: '/product/:id',
-          component: Product,
+          component: () => import('./pages/product.vue'),
           name: 'product'
         },
         {
           path: '/detail/:id',
-          component: Detail,
+          component: () => import('./pages/detail.vue'),
           name: 'detail'
         }
       ]
     },
     {
       path: '/order',
-      component: Order,
+      component: () => import('./pages/order.vue'),
       name: 'order',
       children: [
         {
           path: 'list',
-          component: OrderList,
+          component: () => import('./pages/orderList.vue'),
           name: 'order-list'
         },
         {
           path: 'pay',
-          component: OrderPay,
+          component: () => import('./pages/orderPay.vue'),
           name: 'order-pay'
         },
         {
           path: 'confirm',
-          component: OrderConfirm,
+          component: () => import('./pages/orderConfirm.vue'),
           name: 'order-confirm'
         },
         {
           path: 'alipay',
-          component: AliPay,
+          component: () => import('./pages/alipay.vue'),
           name: 'alipay'
         }
       ]
@@ -71,22 +63,22 @@ export default new VueRouter({
     {
       path: '/personal',
       redirect: '/personal/login',
-      component: Personal,
+      component: () =>import('./pages/personal.vue'),
       name: 'personal',
       children: [
         {
           path: 'login',
-          component: Login
+          component: () => import('./pages/login.vue'),
         },
         {
           path: 'register',
-          component: Register
+          component: () => import('./pages/register.vue'),
         }
       ]
     },
     {
       path: '/cart',
-      component: Cart,
+      component: () => import('./pages/cart.vue'),
       name: 'cart'
     }
   ]
